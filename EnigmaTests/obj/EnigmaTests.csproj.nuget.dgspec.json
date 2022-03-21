@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\C#\\Enigma\\EnigmaTests\\EnigmaTests.csproj": {}
+    "C:\\Users\\l00156477\\Desktop\\C#\\EnigmaTests\\EnigmaTests.csproj": {}
   },
   "projects": {
-    "D:\\Code\\C#\\Enigma\\EnigmaTests\\EnigmaTests.csproj": {
+    "C:\\Users\\l00156477\\Desktop\\C#\\EnigmaTests\\EnigmaTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\C#\\Enigma\\EnigmaTests\\EnigmaTests.csproj",
+        "projectUniqueName": "C:\\Users\\l00156477\\Desktop\\C#\\EnigmaTests\\EnigmaTests.csproj",
         "projectName": "EnigmaTests",
-        "projectPath": "D:\\Code\\C#\\Enigma\\EnigmaTests\\EnigmaTests.csproj",
-        "packagesPath": "C:\\Users\\Sham\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\C#\\Enigma\\EnigmaTests\\obj\\",
+        "projectPath": "C:\\Users\\l00156477\\Desktop\\C#\\EnigmaTests\\EnigmaTests.csproj",
+        "packagesPath": "C:\\Users\\l00156477\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\l00156477\\Desktop\\C#\\EnigmaTests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Sham\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\l00156477\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net48"
@@ -28,8 +34,8 @@
           "net48": {
             "targetAlias": "net48",
             "projectReferences": {
-              "D:\\Code\\C#\\Enigma\\Enigma\\Enigma.csproj": {
-                "projectPath": "D:\\Code\\C#\\Enigma\\Enigma\\Enigma.csproj"
+              "C:\\Users\\l00156477\\Desktop\\C#\\Enigma\\Enigma.csproj": {
+                "projectPath": "C:\\Users\\l00156477\\Desktop\\C#\\Enigma\\Enigma.csproj"
               }
             }
           }
@@ -65,20 +71,15 @@
               "version": "[2.4.3, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\C#\\Enigma\\Enigma\\Enigma.csproj": {
+    "C:\\Users\\l00156477\\Desktop\\C#\\Enigma\\Enigma.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Code\\C#\\Enigma\\Enigma\\Enigma.csproj",
+        "projectUniqueName": "C:\\Users\\l00156477\\Desktop\\C#\\Enigma\\Enigma.csproj",
         "projectName": "Enigma",
-        "projectPath": "D:\\Code\\C#\\Enigma\\Enigma\\Enigma.csproj",
-        "frameworks": {
-          "net48": {
-            "projectReferences": {}
-          }
-        }
+        "projectPath": "C:\\Users\\l00156477\\Desktop\\C#\\Enigma\\Enigma.csproj"
       },
       "frameworks": {
         "net48": {}

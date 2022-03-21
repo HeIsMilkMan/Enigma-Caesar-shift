@@ -43,6 +43,7 @@ namespace Enigma
             String rotor = rotors[0];
             String SecondString = FormatInputMessage(FirstString.ToString());
             Console.WriteLine(SecondString);
+            Console.WriteLine(CaesarShift(SecondString,4,true));
             Console.WriteLine($"sham {ApplyRotor(SecondString.ToString(), rotor)}");
             return SecondString.ToString();
 
@@ -67,6 +68,7 @@ namespace Enigma
         {
             // TO DO - add your implementation
             throw new NotImplementedException();
+
         }
 
         /// <summary>
@@ -94,6 +96,7 @@ namespace Enigma
                 if (msg[i] == '.')
                 {
                     msg.Replace('.', '€');
+                    Console.WriteLine(msg.ToString());
                 }
                 else if (msg[i] == ' ')
                 {
@@ -101,16 +104,14 @@ namespace Enigma
                 }
                 else if (!Char.IsLetter(msg[i]))
                 {
-                    if(msg[i] == '?' || msg[i] == '€')
+                    if (msg[i] == '?' || msg[i] == '€')
                     {
                         continue;
                     }
-                    
+                    Console.WriteLine(msg.ToString());
                     msg.Remove(i, 1);
                 }
-
             }
-
             return msg.ToString().ToUpper();
         }
 
@@ -154,7 +155,52 @@ namespace Enigma
         public static string CaesarShift(string message, int shift, bool encode)
         {
             // TO DO - add your implementation
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            StringBuilder _message = new StringBuilder(message);
+            StringBuilder _newMessage = new StringBuilder();
+            int IntiallShift = shift;
+            bool Encoding = encode;
+
+            for(int i = 0; i< _message.Length; i ++)
+            {
+                if(_message[i] == '?' || _message[i] == '€')
+                {
+                    if (_message[i] == '?')
+                    {
+                        _newMessage.Append("?");
+                    }
+                    else
+                    {
+                        _newMessage.Append("€");
+                    }
+                }
+                else if(IntiallShift < 0)
+                {
+                    int _newLetter = _message[i] + (IntiallShift - i);
+                    Console.WriteLine($"First letters = {_newLetter}");
+                    Console.WriteLine(IntiallShift - i);
+                    if (_newLetter < 65)
+                    {
+                        _newLetter = _newLetter + 26;
+                        Console.WriteLine($"less than 65 new number is {_newLetter}");
+                    }
+                    _newMessage.Append((char)_newLetter);
+                }
+                else
+                {
+                    int _newLetter = _message[i] + (IntiallShift + i);
+                    Console.WriteLine(IntiallShift + i);
+                    if(_newLetter > 90)
+                    {
+                        _newLetter = _newLetter - 26;
+                        Console.WriteLine($"greater than 90 new number is {_newLetter}");
+                    }
+                    _newMessage.Append((char)_newLetter);
+                }
+
+            }
+            return _newMessage.ToString();
+
         }
 
 
@@ -174,31 +220,31 @@ namespace Enigma
         {
             // TO DO - add your implementation
             //throw new NotImplementedException();
-            StringBuilder msg = new StringBuilder(message);
-            StringBuilder NewString = new StringBuilder();
+            StringBuilder _message = new StringBuilder(message);
+            StringBuilder _newMessage = new StringBuilder();
             String applyrotor = rotor;
             Console.WriteLine(applyrotor);
      
-            for (int i = 0; i <msg.Length; i ++)
+            for (int i = 0; i < _message.Length; i ++)
             {
-                if (msg[i] == '?' || msg[i] == '€')
+                if (_message[i] == '?' || _message[i] == '€')
                 {
-                    if(msg[i] == '?')
+                    if(_message[i] == '?')
                     {
-                        NewString.Append("?");
+                        _newMessage.Append("?");
                     }
                     else
                     {
-                        NewString.Append("€");
+                        _newMessage.Append("€");
                     }
                 }
                 else
                 {
-                    int Newletter = msg[i] - 65;
-                    NewString.Append(applyrotor[Newletter]);
+                    int _newLetter = _message[i] - 65;
+                    _newMessage.Append(applyrotor[_newLetter]);
                 }
             }
-            return NewString.ToString();
+            return _newMessage.ToString();
         }
         
 
