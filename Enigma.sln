@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma", "Enigma\Enigma.csproj", "{4F30A2E5-F2C4-4312-BA8A-35908033C427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnigmaTests", "EnigmaTests\EnigmaTests.csproj", "{A7C9F779-EB5B-473C-9BCE-67296B835F86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F30A2E5-F2C4-4312-BA8A-35908033C427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F30A2E5-F2C4-4312-BA8A-35908033C427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F30A2E5-F2C4-4312-BA8A-35908033C427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F30A2E5-F2C4-4312-BA8A-35908033C427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C9F779-EB5B-473C-9BCE-67296B835F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C9F779-EB5B-473C-9BCE-67296B835F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C9F779-EB5B-473C-9BCE-67296B835F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C9F779-EB5B-473C-9BCE-67296B835F86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79EF67FC-CF60-4688-BB42-D68BCD56E28C}
+	EndGlobalSection
+EndGlobal
