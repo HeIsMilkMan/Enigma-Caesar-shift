@@ -21,12 +21,13 @@ namespace Enigma
             //rotors.Add("BDFHJLCPRTXVZNYEIWGAKMUSQO");
             rotors.Add("HFPMRIBTJWYDXQLGUKOVSNAZEC");
 
+
             string startMessage = "Error messages are difficult to read";
-            string hello = "Apples. Are Lovely  .";
+            string hello = "Deine Zauber binden wieder.";
 
             Console.WriteLine("The starting message is: " + startMessage);
 
-            string encodedMessage = EnigmaMachine.Encode(hello, 0, rotors);
+            string encodedMessage = EnigmaMachine.Encode(hello, 12, rotors);
             //Console.WriteLine("\nThe encoded message is: {0}", encodedMessage);
 
             //Console.WriteLine("\n\nDecoding the message: {0}", encodedMessage);

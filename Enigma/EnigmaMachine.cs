@@ -39,13 +39,15 @@ namespace Enigma
         {
             // TO DO - add your implementation
             //throw new NotImplementedException();
-            StringBuilder FirstString = new StringBuilder(message);
+            String FirstString = message;            
             String rotor = rotors[0];
-            String SecondString = FormatInputMessage(FirstString.ToString());
-            Console.WriteLine(SecondString);
-            Console.WriteLine(CaesarShift(SecondString,4,true));
-            Console.WriteLine($"sham {ApplyRotor(SecondString.ToString(), rotor)}");
-            return SecondString.ToString();
+            String SecondString = FormatInputMessage(FirstString);
+            Console.WriteLine($"Formatted String {SecondString}");
+            String ThirdString = CaesarShift(SecondString,incrementNumber,true);
+            Console.WriteLine($"CaeserSifted String {ThirdString}");
+            String FourthString = ApplyRotor(ThirdString.ToString(), rotor);
+            Console.WriteLine($"Rotor Added String {FourthString}");
+            return FourthString.ToString();
 
         }
 
@@ -88,30 +90,19 @@ namespace Enigma
         {
             // TO DO - add your implementation
             //throw new NotImplementedException();
-            StringBuilder msg = new StringBuilder(message);
+            StringBuilder msg = new StringBuilder(message.Trim());
 
-           
             for (int i = 0; i < msg.Length; i++)
             {
-                if (msg[i] == '.')
+                if (msg[i] != '.' && msg[i] != ' ' && !Char.IsLetter(msg[i]))
                 {
-                    msg.Replace('.', '€');
-                    Console.WriteLine(msg.ToString());
-                }
-                else if (msg[i] == ' ')
-                {
-                    msg.Replace(' ', '?');
-                }
-                else if (!Char.IsLetter(msg[i]))
-                {
-                    if (msg[i] == '?' || msg[i] == '€')
-                    {
-                        continue;
-                    }
-                    Console.WriteLine(msg.ToString());
+                    
                     msg.Remove(i, 1);
+                    Console.WriteLine(msg.ToString());
                 }
             }
+            msg.Replace('.', '€');
+            msg.Replace(' ', '?'); 
             return msg.ToString().ToUpper();
         }
 
@@ -158,49 +149,44 @@ namespace Enigma
             //throw new NotImplementedException();
             StringBuilder _message = new StringBuilder(message);
             StringBuilder _newMessage = new StringBuilder();
-            int IntiallShift = shift;
-            bool Encoding = encode;
-
-            for(int i = 0; i< _message.Length; i ++)
+            
+        if(encode)
             {
-                if(_message[i] == '?' || _message[i] == '€')
+                for (int i = 0; i < _message.Length; i++)
                 {
-                    if (_message[i] == '?')
+                    if (_message[i] == '?' || _message[i] == '€')
                     {
-                        _newMessage.Append("?");
+                        _newMessage.Append(_message[i]);
+                        shift--;
+                    }
+                    else if (shift < 0)
+                    {
+                        int _newLetter = _message[i] + (shift - i);
+                        if (_newLetter < 65)
+                        {
+                            _newLetter = _newLetter + 26;
+                        }
+                        _newMessage.Append((char)_newLetter);
                     }
                     else
                     {
-                        _newMessage.Append("€");
+                        int _newLetter = _message[i] + (shift + i );
+                        if (_newLetter > 90)
+                        {
+                            _newLetter = _newLetter - 26;
+                            if (_newLetter > 90)
+                            {
+                                _newLetter = _newLetter - 26;
+                            }
+                        }
+                        _newMessage.Append((char)_newLetter);
                     }
-                }
-                else if(IntiallShift < 0)
-                {
-                    int _newLetter = _message[i] + (IntiallShift - i);
-                    Console.WriteLine($"First letters = {_newLetter}");
-                    Console.WriteLine(IntiallShift - i);
-                    if (_newLetter < 65)
-                    {
-                        _newLetter = _newLetter + 26;
-                        Console.WriteLine($"less than 65 new number is {_newLetter}");
-                    }
-                    _newMessage.Append((char)_newLetter);
-                }
-                else
-                {
-                    int _newLetter = _message[i] + (IntiallShift + i);
-                    Console.WriteLine(IntiallShift + i);
-                    if(_newLetter > 90)
-                    {
-                        _newLetter = _newLetter - 26;
-                        Console.WriteLine($"greater than 90 new number is {_newLetter}");
-                    }
-                    _newMessage.Append((char)_newLetter);
-                }
 
+                }
+                
+                return _newMessage.ToString();
             }
             return _newMessage.ToString();
-
         }
 
 
