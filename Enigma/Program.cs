@@ -18,21 +18,21 @@ namespace Enigma
 
             //// List of rotors to map characters. Spaces and full stops are ignored.
             List<string> rotors = new List<string>();
-            //rotors.Add("BDFHJLCPRTXVZNYEIWGAKMUSQO");
-            rotors.Add("HFPMRIBTJWYDXQLGUKOVSNAZEC");
+            rotors.Add("BDFHJLCPRTXVZNYEIWGAKMUSQO");
 
 
             string startMessage = "Error messages are difficult to read";
-            string hello = "Deine Zauber binden wieder.";
+            string hello = "ab";
 
             Console.WriteLine("The starting message is: " + startMessage);
 
-            string encodedMessage = EnigmaMachine.Encode(hello, 12, rotors);
+            string encodedMessage = EnigmaMachine.Encode(hello, -1, rotors);
             //Console.WriteLine("\nThe encoded message is: {0}", encodedMessage);
 
             //Console.WriteLine("\n\nDecoding the message: {0}", encodedMessage);
 
-            //string decodedMessage = EnigmaMachine.Decode(encodedMessage, 0, rotors);
+            string decodedMessage = EnigmaMachine.Decode(encodedMessage, -1, rotors);
+            
 
             //Console.WriteLine("\n\nThe decoded message is:{0} \n", decodedMessage);
 

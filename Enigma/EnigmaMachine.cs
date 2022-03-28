@@ -40,12 +40,17 @@ namespace Enigma
             // TO DO - add your implementation
             //throw new NotImplementedException();
             String FirstString = message;            
-            String rotor = rotors[0];
+            
+            
             String SecondString = FormatInputMessage(FirstString);
             Console.WriteLine($"Formatted String {SecondString}");
             String ThirdString = CaesarShift(SecondString,incrementNumber,true);
             Console.WriteLine($"CaeserSifted String {ThirdString}");
-            String FourthString = ApplyRotor(ThirdString.ToString(), rotor);
+            StringBuilder FourthString = new StringBuilder(ThirdString);
+            foreach (String rotor in rotors)
+            {
+                FourthString.Replace(FourthString.ToString(),ApplyRotor(FourthString.ToString(), rotor));
+            }
             Console.WriteLine($"Rotor Added String {FourthString}");
             return FourthString.ToString();
 
@@ -69,7 +74,17 @@ namespace Enigma
         public static string Decode(string message, int incrementNumber, List<string> rotors)
         {
             // TO DO - add your implementation
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            StringBuilder reverseRotorMessage = new StringBuilder(message);
+            foreach (String rotor in rotors)
+            {
+                reverseRotorMessage.Replace(reverseRotorMessage.ToString(), ReverseRotor(reverseRotorMessage.ToString(),rotor));
+            }
+            String unCaesarShifted = CaesarShift(reverseRotorMessage.ToString(), incrementNumber, false);
+            
+            String FormattedMessage = FormatOutputMessage(unCaesarShifted);
+
+            return FormattedMessage;
 
         }
 
@@ -123,7 +138,30 @@ namespace Enigma
         public static string FormatOutputMessage(string message)
         {
             // TO DO - add your implementation
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            StringBuilder FortmatedOutPut = new StringBuilder();
+            String msg = message.ToLower().Replace('?', ' ').Replace('€', '.');
+            bool isFullStop = true;
+
+            for(int i =0; i < msg.Length; i ++)
+            {
+                if(isFullStop == true && Char.IsLetter(msg[i]))
+                {
+                    isFullStop = false;
+                    FortmatedOutPut.Append(msg[i].ToString().ToUpper());
+                }
+                else
+                {
+                    FortmatedOutPut.Append(msg[i]);
+                    Console.Write(msg[i]);
+                }
+                if(msg[i] == '.')
+                {
+                    isFullStop = true;
+                }
+                
+            }
+            return FortmatedOutPut.ToString().Trim();
         }
 
         /// <summary>
@@ -147,47 +185,94 @@ namespace Enigma
         {
             // TO DO - add your implementation
             //throw new NotImplementedException();
-            StringBuilder _message = new StringBuilder(message);
-            StringBuilder _newMessage = new StringBuilder();
-            
-        if(encode)
+            StringBuilder msg = new StringBuilder(message);
+            StringBuilder newMessage = new StringBuilder();
+            int newLetter = 0;
+
+
+            if (encode)
             {
-                for (int i = 0; i < _message.Length; i++)
+                for (int i = 0; i < msg.Length; i++)
                 {
-                    if (_message[i] == '?' || _message[i] == '€')
+                    if (msg[i] == '?' || msg[i] == '€')
                     {
-                        _newMessage.Append(_message[i]);
-                        shift--;
+                        newMessage.Append(msg[i]);
+                        if(shift < 0)
+                        {
+                            shift--;
+                        }
+                        else
+                        {
+                            shift++;
+                        }
+                        
                     }
                     else if (shift < 0)
                     {
-                        int _newLetter = _message[i] + (shift - i);
-                        if (_newLetter < 65)
+                        newLetter = msg[i] + (shift - i);
+                        while(newLetter < 65)
                         {
-                            _newLetter = _newLetter + 26;
+                            newLetter = newLetter + 26;
                         }
-                        _newMessage.Append((char)_newLetter);
+                        newMessage.Append((char)newLetter);
                     }
                     else
                     {
-                        int _newLetter = _message[i] + (shift + i );
-                        if (_newLetter > 90)
+                        newLetter = msg[i] + (shift + i );
+                        while (newLetter > 90)
                         {
-                            _newLetter = _newLetter - 26;
-                            if (_newLetter > 90)
-                            {
-                                _newLetter = _newLetter - 26;
-                            }
+                            newLetter = newLetter - 26;
                         }
-                        _newMessage.Append((char)_newLetter);
+                        newMessage.Append((char)newLetter);
                     }
-
                 }
                 
-                return _newMessage.ToString();
+                return newMessage.ToString();
             }
-            return _newMessage.ToString();
+            else
+            {
+                shift *= -1;
+                for (int i = 0; i < msg.Length; i++)
+                {
+                    if (msg[i] == '?' || msg[i] == '€')
+                    {
+                        newMessage.Append(msg[i]);
+                        if(shift < 0)
+                        {
+                            shift++;
+                        }
+                        else
+                        {
+                            shift--;
+                        }
+                        
+                    }
+                    else if (shift <= 0)
+                    {
+                        newLetter = msg[i] + (shift - i);
+                        while (newLetter < 65)
+                        {
+                            newLetter = newLetter + 26;
+                        }
+                        newMessage.Append((char)newLetter);
+                    }
+                    else
+                    {
+                        int _newLetter = msg[i] + (shift + i);
+                        while (_newLetter > 90)
+                        {
+                            newLetter = newLetter - 26;
+                        }
+                        newMessage.Append((char)_newLetter);
+                    }
+                }
+                return newMessage.ToString();
+            }
+            
         }
+       
+
+
 
 
         /// <summary>
@@ -215,14 +300,7 @@ namespace Enigma
             {
                 if (_message[i] == '?' || _message[i] == '€')
                 {
-                    if(_message[i] == '?')
-                    {
-                        _newMessage.Append("?");
-                    }
-                    else
-                    {
-                        _newMessage.Append("€");
-                    }
+                    _newMessage.Append(message[i]);
                 }
                 else
                 {
@@ -247,7 +325,30 @@ namespace Enigma
         private static string ReverseRotor(string message, string rotor)
         {
             // TO DO - add your implementation
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            StringBuilder reverseRotor = new StringBuilder();
+            int newLetter = 0;
+            for (int i = 0; i < message.Length; i ++)
+            {
+                if (message[i] == '?' || message[i] == '€')
+                {
+                    reverseRotor.Append(message[i]);
+                }
+                else
+                {
+                    for (int j = 0; j < rotor.Length; j ++)
+                    {
+                        if( message[i] == rotor[j])
+                        {
+                            newLetter = j;
+                            break;
+                        }   
+                    }
+                    reverseRotor.Append((char)(newLetter + 65));
+                }
+            }
+            return reverseRotor.ToString();
+
         }
     }
 }
