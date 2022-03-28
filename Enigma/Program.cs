@@ -22,16 +22,15 @@ namespace Enigma
 
 
             string startMessage = "Error messages are difficult to read";
-            string hello = "ab";
 
             Console.WriteLine("The starting message is: " + startMessage);
 
-            string encodedMessage = EnigmaMachine.Encode(hello, -1, rotors);
+            string encodedMessage = EnigmaMachine.Encode(startMessage, 10, rotors);
             //Console.WriteLine("\nThe encoded message is: {0}", encodedMessage);
 
             //Console.WriteLine("\n\nDecoding the message: {0}", encodedMessage);
 
-            string decodedMessage = EnigmaMachine.Decode(encodedMessage, -1, rotors);
+            string decodedMessage = EnigmaMachine.Decode(encodedMessage, 10, rotors);
             
 
             //Console.WriteLine("\n\nThe decoded message is:{0} \n", decodedMessage);
